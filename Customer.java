@@ -57,7 +57,5 @@ class Customer {
         }}
     }
     
-    public String toString(){
-        return "ID "+ getPaymentId()+"- OwnerName: "+getOwnerName()+ "Type"+getPaymentType()+ "Card"+ getCardNumber() +"expiryDate"+ getExpiryDate()+ "Balance" + getBalance();
-    }
+  
 }
