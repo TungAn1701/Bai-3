@@ -26,7 +26,8 @@ class BankTransfer extends PaymentMethod implements Payable,Refundable{
             return "Bank Transfer";
     }
     public boolean processPayment(double amount){
-        if(!isBankHoliday){
+        if(isBankHoliday){
+            System.out.println("Hôm nay nghỉ");
             return false;
         }
         if (validate()&&hasSufficientFunds(amount)){
@@ -35,14 +36,8 @@ class BankTransfer extends PaymentMethod implements Payable,Refundable{
             return true;
 
         }
-        return true;
+        return false;
     }
-       
-          
-
-    
-        
-    
         public String getPaymentDetails(){
             return "Bank:" + bankName + ", Account Number: "+ accountNumber.substring(accountNumber.length()-4);
         }

@@ -1,4 +1,4 @@
-class PaymentProcessor{
+class PaymentProcessor implements Payable,Refundable{
     public static boolean process(PaymentMethod pm, double amount){
         return pm.validate() && pm.hasSufficientFunds(amount);
     }
@@ -10,10 +10,10 @@ class PaymentProcessor{
        return transaction.getPaymentMethod().validate() && transaction.getPaymentMethod().hasSufficientFunds(transaction.getAmount());
     }
     public static void executePayment( Payable payable, double amount){
-        
+        payable.processPayment(amount);
         
     }
     public static void executeRefund(Refundable refundable, double amount){
-        
+        refundable.processRefund(amount);
     }
 }

@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import Regex;
+
 class CreditCard extends PaymentMethod implements Payable,Refundable{
     private String cardNumber;
     private String cvv;
@@ -21,6 +21,12 @@ class CreditCard extends PaymentMethod implements Payable,Refundable{
         this.expiryDate="00/00";
         System.out.println("Default Credit Card created");
 
+    }
+    public CreditCard(String ownerName , String cardNumber ,String cvv ,String expiryDate, double balance){
+        super(ownerName,balance);
+        this.cardNumber= cardNumber;
+        this.cvv = cvv;
+        this.expiryDate = expiryDate;
     }
     public CreditCard(String ownerName, double balance, String cardNumber, String cvv, String expiryDate){
         super(ownerName, balance);
@@ -56,12 +62,12 @@ class CreditCard extends PaymentMethod implements Payable,Refundable{
         int nowMonth = now.getMonthValue();
         int nowYear = now.getYear();
         
-        if(cvv.length()!=3 && (year < nowYear || (year == nowYear && month < nowMonth))){
-            System.out.println("Invalid Credit Card");
-            return false;
-        } else {
+        if(cvv.length() ==3 && (year < nowYear || (year == nowYear && month < nowMonth))){
             System.out.println("Valid Credit Card");
             return true;
+        } else {
+            System.out.println("Invalid Credit Card");
+            return false;
         }
     }
     public String getPaymentType(){

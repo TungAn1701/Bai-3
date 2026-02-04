@@ -1,9 +1,10 @@
+
 class Transaction {
     private final String transactionId;
     private PaymentMethod paymentMethod;
     private double amount;
     private String description;
-    private static int totalTransactions;
+    private static int totalTransactions = 1;
     public Transaction( PaymentMethod paymentMethod, double amount, String description) {
         this.transactionId = "TXN"+ String.format("%03d",totalTransactions);
         this.paymentMethod = paymentMethod;
@@ -35,7 +36,7 @@ class Transaction {
         this.description = description;
     }
     public static int getTotalTransactions(){
-        return totalTransactions;
+        return totalTransactions - 1;
     }
     @Override
     public boolean equals(Object obj){
@@ -43,7 +44,7 @@ class Transaction {
             return true;
         }
 
-        if(getTransactionId().equals(obj.getTransactionId)){
+        if(getTransactionId().equals(obj.getTransactionId())){
             return true;
         }
         if(obj==null){
@@ -52,6 +53,7 @@ class Transaction {
         if(getClass()!=obj.getClass()){
             return false;
         }
+        return false;
     }
     @Override
     public int hashCode(){
@@ -59,5 +61,5 @@ class Transaction {
     }
     @Override
     public String toString(){
-        return "Transaction ID: "+getTransactionId().hashCode()+", Payment Method: "+getPaymentMethod()+", Amount: "+getAmount()+", Description: "+getDescription();
+        return "Transaction ID: "+getTransactionId()+", Payment Method: "+getPaymentMethod()+", Amount: "+getAmount()+", Description: "+getDescription();
 }}

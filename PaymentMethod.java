@@ -2,7 +2,7 @@ abstract class PaymentMethod {
     private final String paymentId;
     private String ownerName;
     private double balance;
-    private static int paymentCount =1 ;
+    private static int paymentCount = 1;
     public PaymentMethod(String ownerName, double balance){
         this.paymentId = "PAY" + String.format("%03d", paymentCount);
         this.ownerName = ownerName;
@@ -35,7 +35,7 @@ abstract class PaymentMethod {
         return balance;
     }
     public static int getPaymentCount(){
-        return paymentCount-2 ;
+        return paymentCount ;
     }
     public void setOwnerName(String ownerName){
         this.ownerName = ownerName;
@@ -46,5 +46,6 @@ abstract class PaymentMethod {
     public String getPaymentId(){
         return paymentId;
     }
+   
 
-}
+    }

@@ -1,4 +1,6 @@
-class Customer{ 
+import java.util.*;
+
+class Customer {
     private String customerId;
     private String name;
     private String email;
@@ -32,8 +34,11 @@ class Customer{
         paymentMethods.add(pm);
     }
     public boolean removePaymentMethod(String paymentId){
-        if (paymentMethods.getElementById(paymentId)!= null){
-            return paymentMethods.remove(paymentMethods.getElementById(paymentId));
+        for(PaymentMethod pm : paymentMethods){
+            if(pm.getPaymentId().equals(paymentId)){
+                paymentMethods.remove(pm);
+                return true;
+            }
         }
         return false;
     }
@@ -44,8 +49,15 @@ class Customer{
     
     }
     public void displayAllPaymentMethods(){
+        if(paymentMethods == null ){
+          System.out.println("Rỗng");
+        }else{
         for (PaymentMethod pm : paymentMethods){
-            System.out.println(pm.getPaymentDetails());
-        }
+            System.out.println(pm);
+        }}
+    }
+    
+    public String toString(){
+        return "ID "+ getPaymentId()+"- OwnerName: "+getOwnerName()+ "Type"+getPaymentType()+ "Card"+ getCardNumber() +"expiryDate"+ getExpiryDate()+ "Balance" + getBalance();
     }
 }

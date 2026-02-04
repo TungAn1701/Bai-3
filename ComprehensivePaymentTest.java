@@ -112,7 +112,7 @@ public class ComprehensivePaymentTest {
         System.out.println("\n\n>>> TEST 5: TESTING REFUND PROCESSING <<<\n");
         
         System.out.println("Before refund - Balance: $" + cc5.getBalance());
-        boolean refundSuccess = cc5.pefund(100.0);
+        boolean refundSuccess = cc5.processRefund(100.0);
         System.out.println("Refund $100.00: " + (refundSuccess ? "SUCCESS" : "FAILED"));
         System.out.println("After refund - Balance: $" + cc5.getBalance());
         
@@ -165,7 +165,7 @@ public class ComprehensivePaymentTest {
         System.out.println("Transaction 2: " + t2);
         System.out.println("Transaction 3: " + t3);
         
-        System.out.println("\nTotal Transactions Created: " + Transaction.totalTransactions());
+        System.out.println("\nTotal Transactions Created: " + Transaction.getTotalTransactions());
         
         // ============================================
         // TEST 8: EQUALS AND HASHCODE (HashSet/HashMap)
@@ -331,7 +331,7 @@ public class ComprehensivePaymentTest {
         System.out.println("         TEST SUMMARY");
         System.out.println("========================================");
         System.out.println("Total Payment Methods Created: " + PaymentMethod.getPaymentCount());
-        System.out.println("Total Transactions Created: " + Transaction.totalTransactions());
+        System.out.println("Total Transactions Created: " + Transaction.getTotalTransactions());
         System.out.println("\n✅ ALL TESTS COMPLETED!");
         System.out.println("========================================\n");
     }
